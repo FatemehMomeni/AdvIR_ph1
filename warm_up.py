@@ -52,7 +52,7 @@ for title, author, date, views, likes, link in zip(
     ted_list.append(talk_dict)
 
 # Create the client instance
-es = Elasticsearch("https://localhost:9200", verify_certs=False, basic_auth=("elastic", 'vbEP_fOLmUvGy==16gvZ'))
+es = Elasticsearch("http://localhost:9200")
 
 es.indices.create(index='ted_index', body={
     'settings': {
