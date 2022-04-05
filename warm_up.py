@@ -25,7 +25,7 @@ for title, author, date, views, likes, link in zip(
         ted_sheet.column['likes'],
         ted_sheet.column['link'],
 ):
-    #link = link.strip()
+
     talk_dict = {
         'title': title,
         'author': author,
@@ -36,7 +36,6 @@ for title, author, date, views, likes, link in zip(
         'transcript': ''
     }
 
-    # crawling in the pages and scraping data
     complete_text = ''
     talk_url = link + '/transcript'
     browser.get(talk_url)
@@ -51,9 +50,7 @@ for title, author, date, views, likes, link in zip(
     talk_dict['transcript'] = complete_text
     ted_list.append(talk_dict)
 
-# Create the client instance
 es = Elasticsearch("http://localhost:9200")
-
 es.indices.create(index='ted_index', body={
     'settings': {
         'analysis': {
